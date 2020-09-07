@@ -53,7 +53,7 @@ namespace company
             int cxp = countPerPage * page;
             dataGridView1.DataSource = dat.Skip(cxp).Take(countPerPage).ToList();
            
-            dataGridView1.Font = new Font("標楷體", 17);
+            dataGridView1.Font = new Font("標楷體", 15);
 
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
@@ -116,7 +116,7 @@ namespace company
             comboBox1.Text = " ";
             
             comboBox2.Text = " ";
-            countPerPage = 5;
+            countPerPage = 10;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -194,8 +194,8 @@ namespace company
 
         private void button3_Click(object sender, EventArgs e)
         {
-            change c = new change();
-            c.Show();
+            see s = new see();
+            s.Show();
         }
         //datagridview點選顯示資料
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -232,7 +232,7 @@ namespace company
         }
 
         int page =0;
-        int countPerPage = 5;
+        int countPerPage = 10;
 
        
 
@@ -252,7 +252,7 @@ namespace company
             if (c- (countPerPage * page) < countPerPage)
             {
                 countPerPage = c - (countPerPage * page);
-                if (countPerPage < 0) countPerPage = 20;
+                if (countPerPage < 0) countPerPage = 10;
                 page--;
             };
             
@@ -297,7 +297,7 @@ namespace company
                 dat = dat.Where(n => n.成立日期.ToString().Contains(tt));
                 dataGridView1.DataSource = dat.Skip(cxp).Take(countPerPage).ToList();
             }
-            countPerPage = 5;
+            countPerPage = 10;
             label3.Text = "第"+page.ToString()+"頁";
         }
 
@@ -396,18 +396,7 @@ namespace company
                 int cxp = countPerPage * page;
                 dataGridView1.DataSource = dat.Skip(cxp).Take(countPerPage).ToList();
                 label3.Text = "第" + page.ToString() + "頁";
-            }
-            else
-            {
-                MessageBox.Show("請先選擇資料");
-            }
-        }
 
-        //列印
-        private void button6_Click(object sender, EventArgs e)
-        {
-            if(changecheck == 1) 
-            {
                 string Filestr = $@"C:\hw4\{textBox8.Text}";
 
                 Excel.Application app = new Excel.Application();
@@ -417,7 +406,7 @@ namespace company
                 ws = exwb.Worksheets[1];
                 ws.Name = "cell";
 
-                if (comboBox1.Text == "66")
+                if (comboBox5.Text == "66")
                 {
                     app.Cells[3, 1] = "66";
                     app.Cells[5, 1] = "LAEM CHABANG";
@@ -427,7 +416,7 @@ namespace company
                     app.Cells[24, 2] = textBox8.Text;
 
                 }
-                else if (comboBox1.Text == "84")
+                else if (comboBox5.Text == "84")
                 {
                     app.Cells[3, 1] = "84";
                     app.Cells[5, 1] = "HO CHI MINH";
@@ -437,7 +426,7 @@ namespace company
                     app.Cells[24, 2] = textBox8.Text;
 
                 }
-                else if (comboBox1.Text == "SMART TECH")
+                else if (comboBox5.Text == "SMART TECH")
                 {
                     app.Cells[3, 1] = "SMART TECH";
                     app.Cells[5, 1] = "BAVET";
@@ -449,8 +438,8 @@ namespace company
 
 
                 //右上
+                app.Cells[4, 1] = "--------";
 
-                app.Cells[4, 1] = "       ";
                 app.Cells[6, 1] = "MADE IN TAIWAN";
                 app.Cells[7, 1] = "R.O.C.";
                 app.Cells[8, 1] = @"PO:";
@@ -469,11 +458,12 @@ namespace company
                 app.Cells[8, 6] = textBox4.Text + "  KG";
                 app.Cells[9, 5] = "G.W";
                 app.Cells[9, 6] = textBox5.Text + "  KG";
-                app.Cells[10, 5] = textBox7.Text;
+                app.Cells[3, 5] = textBox7.Text;  //日期
+                app.Cells[10, 5] = textBox1.Text;
                 app.Cells[11, 5] = textBox10.Text;
                 //右下
 
-                app.Cells[20, 1] = "       ";
+                app.Cells[20, 1] = "--------";
                 app.Cells[22, 1] = "MADE IN TAIWAN";
                 app.Cells[23, 1] = "R.O.C.";
                 app.Cells[24, 1] = @"PO:";
@@ -492,17 +482,39 @@ namespace company
                 app.Cells[24, 6] = textBox4.Text + "  KG";
                 app.Cells[25, 5] = "G.W";
                 app.Cells[25, 6] = textBox5.Text + "  KG";
-                app.Cells[26, 5] = textBox7.Text;
+                app.Cells[19, 5] = textBox7.Text;
+                app.Cells[26, 5] = textBox1.Text;
                 app.Cells[27, 5] = textBox10.Text;
 
 
                 exwb.SaveAs(Filestr);
+
+                //app.Visible = true;
+                //app.Workbooks.Open(Filestr);
+
 
                 ws = null;
                 exwb.Close();
                 exwb = null;
                 app.Quit();
                 app = null;
+
+            }
+            else
+            {
+                MessageBox.Show("請先選擇資料");
+            }
+        }
+
+        //列印
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if(changecheck == 1) 
+            {
+                Excel.Application app = new Excel.Application();
+                string Filestr = $@"C:\hw4\{textBox8.Text}";
+                app.Visible = true;
+                app.Workbooks.Open(Filestr);
             }
             else
             {
@@ -560,6 +572,26 @@ namespace company
             int cxp = countPerPage * page;
             dataGridView1.DataSource = dat.Skip(cxp).Take(countPerPage).ToList();
             label3.Text = "第" + page.ToString() + "頁";
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
