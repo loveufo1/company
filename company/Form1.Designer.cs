@@ -41,7 +41,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -68,6 +67,8 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.searchB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -226,7 +227,7 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("新細明體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button6.Location = new System.Drawing.Point(537, 475);
+            this.button6.Location = new System.Drawing.Point(609, 475);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(124, 42);
             this.button6.TabIndex = 69;
@@ -234,22 +235,12 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // comboBox4
-            // 
-            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox4.Font = new System.Drawing.Font("新細明體", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(228, 479);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(279, 33);
-            this.comboBox4.TabIndex = 67;
-            // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button7.Font = new System.Drawing.Font("新細明體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button7.ForeColor = System.Drawing.Color.Red;
-            this.button7.Location = new System.Drawing.Point(687, 475);
+            this.button7.Location = new System.Drawing.Point(751, 475);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(126, 42);
             this.button7.TabIndex = 68;
@@ -496,12 +487,34 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // textBox11
+            // 
+            this.textBox11.Font = new System.Drawing.Font("新細明體", 15F);
+            this.textBox11.Location = new System.Drawing.Point(218, 476);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(225, 37);
+            this.textBox11.TabIndex = 94;
+            this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
+            // 
+            // searchB
+            // 
+            this.searchB.Font = new System.Drawing.Font("新細明體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.searchB.Location = new System.Drawing.Point(468, 475);
+            this.searchB.Name = "searchB";
+            this.searchB.Size = new System.Drawing.Size(124, 42);
+            this.searchB.TabIndex = 95;
+            this.searchB.Text = "搜尋";
+            this.searchB.UseVisualStyleBackColor = true;
+            this.searchB.Click += new System.EventHandler(this.searchB_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1384, 776);
+            this.Controls.Add(this.searchB);
+            this.Controls.Add(this.textBox11);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label15);
@@ -527,7 +540,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
@@ -567,7 +579,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox8;
@@ -594,6 +605,8 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Button searchB;
     }
 }
 

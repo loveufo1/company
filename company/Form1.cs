@@ -220,8 +220,8 @@ namespace company
                 textBox4.Text = n.NW;
                 textBox5.Text = n.GW;
                 textBox6.Text = n.Out;
-                comboBox4.SelectedItem = value;
-                comboBox4.Text = value;
+                
+                textBox11.Text = value;
                 textBox10.Text = n.Al.ToString();
             }
         }
@@ -357,7 +357,7 @@ namespace company
         {
             if(changecheck == 1)
             {
-                string search = comboBox4.Text;
+                string search = textBox11.Text;
                 var n1 = (from m in db.TSell
                          where m.OrderNo == search
                          select m).FirstOrDefault();
@@ -444,7 +444,7 @@ namespace company
                 app.Cells[7, 1] = "R.O.C.";
                 app.Cells[8, 1] = @"PO:";
                 app.Cells[9, 1] = @"C/No.:";
-                app.Cells[11, 5] = textBox6.Text;
+                app.Cells[11, 5] = textBox11.Text;
                 app.Cells[11, 1] = "A";
 
                 app.Cells[4, 5] = "ARTCLE:STEEL PIN";
@@ -453,14 +453,17 @@ namespace company
                 app.Cells[6, 5] = "SIZE ";
                 app.Cells[6, 6] = textBox2.Text;
                 app.Cells[7, 5] = "QNTY ";
-                app.Cells[7, 6] = textBox3.Text + "  PC";
+                app.Cells[7, 6] = textBox3.Text ;
+                app.Cells[7, 7] = "PC";
                 app.Cells[8, 5] = "N.W";
-                app.Cells[8, 6] = textBox4.Text + "  KG";
+                app.Cells[8, 6] = textBox4.Text;
+                app.Cells[8, 7] =   "KG";
                 app.Cells[9, 5] = "G.W";
-                app.Cells[9, 6] = textBox5.Text + "  KG";
+                app.Cells[9, 6] = textBox5.Text ;
+                app.Cells[9, 7] =  " KG";
                 app.Cells[3, 5] = textBox7.Text;  //日期
-                app.Cells[10, 5] = textBox1.Text;
-                app.Cells[11, 5] = textBox10.Text;
+               
+                
                 //右下
 
                 app.Cells[20, 1] = "--------";
@@ -468,7 +471,7 @@ namespace company
                 app.Cells[23, 1] = "R.O.C.";
                 app.Cells[24, 1] = @"PO:";
                 app.Cells[25, 1] = @"C/No.:";
-                app.Cells[27, 5] = textBox6.Text;
+                app.Cells[27, 5] = textBox11.Text;
                 app.Cells[27, 1] = "B";
 
                 app.Cells[20, 5] = "ARTCLE:STEEL PIN";
@@ -477,20 +480,22 @@ namespace company
                 app.Cells[22, 5] = "SIZE ";
                 app.Cells[22, 6] = textBox2.Text;
                 app.Cells[23, 5] = "QNTY ";
-                app.Cells[23, 6] = textBox3.Text + "  PC";
+                app.Cells[23, 6] = textBox3.Text ;
+                app.Cells[23, 7] =  "PC";
                 app.Cells[24, 5] = "N.W";
-                app.Cells[24, 6] = textBox4.Text + "  KG";
+                app.Cells[24, 6] = textBox4.Text;
+                app.Cells[24, 7] = "KG";
                 app.Cells[25, 5] = "G.W";
-                app.Cells[25, 6] = textBox5.Text + "  KG";
+                app.Cells[25, 6] = textBox5.Text;
+                app.Cells[25, 7] =  "KG";
                 app.Cells[19, 5] = textBox7.Text;
-                app.Cells[26, 5] = textBox1.Text;
-                app.Cells[27, 5] = textBox10.Text;
+                
+                
 
 
                 exwb.SaveAs(Filestr);
 
-                //app.Visible = true;
-                //app.Workbooks.Open(Filestr);
+             
 
 
                 ws = null;
@@ -527,7 +532,7 @@ namespace company
         {
             if(changecheck == 1)
             {
-            string search = comboBox4.Text;
+                string search = textBox11.Text;
             var n = (from m in db.TSell
                      where m.OrderNo == search
                      select m).FirstOrDefault();
@@ -591,6 +596,43 @@ namespace company
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        //搜尋
+        private void searchB_Click(object sender, EventArgs e)
+        {
+            if (textBox11.Text == "")
+                MessageBox.Show("請輸入訂單代號");
+            
+            var n = (from m in db.TSell
+                    where m.OrderNo.Contains(textBox11.Text)
+                    select m).FirstOrDefault();
+            if (n != null)
+            {
+                comboBox5.Text = n.HarberCode;
+                comboBox5.SelectedItem = n.HarberCode;
+                textBox1.Text = n.ItemNo;
+                textBox8.Text = n.Po;
+                textBox7.Text = n.Date.ToString();
+                textBox9.Text = n.CDate.ToString();
+                textBox2.Text = n.Quantity.ToString();
+                textBox3.Text = n.Size;
+                textBox4.Text = n.NW;
+                textBox5.Text = n.GW;
+                textBox6.Text = n.Out;             
+                textBox10.Text = n.Al.ToString();
+            }
+            else
+            {
+                MessageBox.Show("查無此項");
+            }
+
+
 
         }
     }

@@ -48,6 +48,19 @@ namespace company
 
             monthC.SelectedItem = DateTime.Now.Month.ToString();
             dataGridView1.Font = new Font("標楷體", 17);
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                DataGridViewColumn column = dataGridView1.Columns[i];
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            }
+
+            this.dataGridView1.SelectionMode =
+            DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.MultiSelect = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+
         }
         homecompanyEntities1 db = new homecompanyEntities1();
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

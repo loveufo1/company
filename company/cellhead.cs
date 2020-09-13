@@ -128,11 +128,14 @@ namespace company
             app.Cells[6, 5] = "SIZE ";
             app.Cells[6, 6] =textBox2.Text;
             app.Cells[7, 5] = "QNTY " ;
-            app.Cells[7, 6] =textBox3.Text +"  PC";
+            app.Cells[7, 6] =textBox3.Text;
+            app.Cells[7, 7] =  "PC";
             app.Cells[8, 5] = "N.W";
-            app.Cells[8, 6] =  textBox4.Text+"  KG";
+            app.Cells[8, 6] =  textBox4.Text;
+            app.Cells[8, 7] = "KG";
             app.Cells[9, 5] = "G.W";
-            app.Cells[9, 6] = textBox5.Text+"  KG";
+            app.Cells[9, 6] = textBox5.Text;
+            app.Cells[9, 7] =  "KG";
             app.Cells[3, 5] = textBox7.Text;  //日期
             app.Cells[10, 5] = textBox6.Text;
             app.Cells[11, 5] = textBox10.Text;
@@ -152,11 +155,15 @@ namespace company
             app.Cells[22, 5] = "SIZE ";
             app.Cells[22, 6] = textBox2.Text;
             app.Cells[23, 5] = "QNTY ";
-            app.Cells[23, 6] = textBox3.Text + "  PC";
+            app.Cells[23, 6] = textBox3.Text;
+            app.Cells[23,7] = "PC";
             app.Cells[24, 5] = "N.W";
-            app.Cells[24, 6] = textBox4.Text + "  KG";
+            app.Cells[24, 6] = textBox4.Text;
+            app.Cells[24, 7] = "KG";
+
             app.Cells[25, 5] = "G.W";
-            app.Cells[25, 6] = textBox5.Text + "  KG";
+            app.Cells[25, 6] = textBox5.Text ;
+            app.Cells[25, 7] = "  KG";
             app.Cells[19, 5] = textBox7.Text;
             app.Cells[26, 5] = textBox6.Text;
             app.Cells[27, 5] = textBox10.Text;
@@ -169,7 +176,11 @@ namespace company
             exwb = null;
             app.Quit();
             app = null;
-            
+
+            Excel.Application app1 = new Excel.Application();           
+            app1.Visible = true;
+            app1.Workbooks.Open(Filestr);
+
         }
 
         private void cellhead_Load(object sender, EventArgs e)
